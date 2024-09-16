@@ -27,15 +27,17 @@ myFile = open("coco_classes.txt","r")
 classNames = myFile.read().split("\n")
 #print(classList)
 
+## video1
+# cap = cv2.VideoCapture("video1.mp4")
+# points = np.array([[270, 238], [294, 280], [592, 226], [552, 207]], np.int32)
+# points = points.reshape((-1, 1, 2))
+
+
 ## video2
 cap = cv2.VideoCapture("video2.mp4")
 points = np.array([[297, 222], [354, 163], [719, 168], [773, 227]], np.int32)
 points = points.reshape((-1, 1, 2))
 
-## video1
-# cap = cv2.VideoCapture("video1.mp4")
-# points = np.array([[270, 238], [294, 280], [592, 226], [552, 207]], np.int32)
-# points = points.reshape((-1, 1, 2))
 
 tracker = Tracker()
 
@@ -72,7 +74,6 @@ while True:
     success,frame=cap.read()
     
     if success:
-
         frame=cv2.resize(frame,(1020,500))
         results = model.predict(frame,verbose=False)
  

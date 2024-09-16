@@ -30,17 +30,15 @@ classNames = myFile.read().split("\n")
 
 # #Define the video source
 
-## video2
-# cap = cv2.VideoCapture("video2.mp4")
-# points = np.array([[297, 222], [354, 163], [719, 168], [773, 227]], np.int32)
+## video1
+# cap = cv2.VideoCapture("video1.mp4")
+# points = np.array([[270, 238], [294, 280], [592, 226], [552, 207]], np.int32)
 # points = points.reshape((-1, 1, 2))
 
-## video1
-cap = cv2.VideoCapture("video1.mp4")
-points = np.array([[270, 238], [294, 280], [592, 226], [552, 207]], np.int32)
+## video2
+cap = cv2.VideoCapture("video2.mp4")
+points = np.array([[297, 222], [354, 163], [719, 168], [773, 227]], np.int32)
 points = points.reshape((-1, 1, 2))
-
-
 
 tracker = Tracker()
 
@@ -72,8 +70,6 @@ while True:
         list=[]
         # Iterate over each row in the DataFrame to draw rectangles
         for index, row in df.iterrows():
-            print(index)
-            print(row)
             x1, y1, x2, y2 = int(row['x1']), int(row['y1']), int(row['x2']), int(row['y2'])
             confidence = row['confidence']
             class_id = int(row['class'])
@@ -82,8 +78,6 @@ while True:
                     label = classNames[class_id]
                     if label in ['car','truck','bus','motorcycle']:
                         list.append([x1, y1, x2, y2,label])
-                    else:
-                        continue
 
         bbox_id = tracker.update(list)
         for bbox in bbox_id:
