@@ -28,15 +28,15 @@ classNames = myFile.read().split("\n")
 #print(classList)
 
 ## video1
-# cap = cv2.VideoCapture("video1.mp4")
-# points = np.array([[270, 238], [294, 280], [592, 226], [552, 207]], np.int32)
-# points = points.reshape((-1, 1, 2))
+cap = cv2.VideoCapture("video1.mp4")
+points = np.array([[270, 238], [294, 280], [592, 226], [552, 207]], np.int32)
+points = points.reshape((-1, 1, 2))
 
 
 ## video2
-cap = cv2.VideoCapture("video2.mp4")
-points = np.array([[297, 222], [354, 163], [719, 168], [773, 227]], np.int32)
-points = points.reshape((-1, 1, 2))
+# cap = cv2.VideoCapture("video2.mp4")
+# points = np.array([[297, 222], [354, 163], [719, 168], [773, 227]], np.int32)
+# points = points.reshape((-1, 1, 2))
 
 
 tracker = Tracker()
@@ -129,7 +129,8 @@ while True:
         # Loop through each category and display the count
         for i, (category, counter) in enumerate(category_map.items()):
             text = f"{category}: {len(counter)}"  # Text to display
-            #color = color_map[category]  # Get the color for the current category
+            
+            # Get the color for the current category
             color =color_map.get(category)
             cv2.putText(frame, text, (x_position, y_position + i * line_height), cv2.FONT_HERSHEY_SIMPLEX, 1, color, 2)
        
